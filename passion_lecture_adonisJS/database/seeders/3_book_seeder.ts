@@ -131,5 +131,6 @@ export default class extends BaseSeeder {
         writerId:  writers[3].id,
         userId: users[3].id,
       },
+    ])
   }
 }
