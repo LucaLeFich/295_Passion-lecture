@@ -14,3 +14,4 @@ const bookValidator = vine.compile(
         idUser: vine.number(),
     })
 )
+export default bookValidator
