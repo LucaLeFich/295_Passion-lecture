@@ -2,7 +2,7 @@ import { BaseSeeder } from '@adonisjs/lucid/seeders'
 import Category from '#models/category'
 
 export default class extends BaseSeeder {
-  async run() {
+  public async run() {
 
     await Category.createMany([
       { label: 'Action'},
