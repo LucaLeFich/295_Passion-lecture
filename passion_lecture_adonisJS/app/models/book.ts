@@ -1,9 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column, hasOne } from '@adonisjs/lucid/orm'
 import Category from './category.js'
 import Writer from './writer.js'
 import User from './user.js'
-import type { Has, HasOne } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo, Has, HasOne } from '@adonisjs/lucid/types/relations'
 
 export default class Book extends BaseModel {
   @column({ isPrimary: true })
@@ -15,16 +15,6 @@ export default class Book extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  /*title (string)
-  numberOfPage (number)
-  pdfLink (string)
-  abstract (string)
-  editor (string)
-  editionYear (number)
-  imagePath (string)
-  idCategory hasOne (number)
-  idWriter hasOne (number)
-  idUser hasOne (number)*/ 
 
   @column()
   declare title: string
@@ -50,10 +40,10 @@ export default class Book extends BaseModel {
   @hasOne(() => Category)
   declare category: HasOne<typeof Category>
 
-  @hasOne(() => Writer)
-  declare writer: HasOne<typeof Writer>
+  @belongsTo(() => Writer)
+  declare writer: BelongsTo<typeof Writer>
 
-  @hasOne(() => User)
-  declare user: HasOne<typeof User>
+  @belongsTo(() => User)
+  declare user: BelongsTo<typeof User>
 
 }
