@@ -37,13 +37,22 @@ export default class Book extends BaseModel {
   @column()
   declare imagePath: string
 
-  @hasOne(() => Category)
-  declare category: HasOne<typeof Category>
+  @column()
+  declare categoryId: number
+
+  @column()
+  declare writerId: number
+
+  @column()
+  declare userId: number
+
+  @belongsTo(() => Category)
+  declare category: BelongsTo<typeof Category>
 
   @belongsTo(() => Writer)
   declare writer: BelongsTo<typeof Writer>
 
-  @belongsTo(() => User)
-  declare user: BelongsTo<typeof User>
+  //@belongsTo(() => User)
+  //declare user: BelongsTo<typeof User>
 
 }

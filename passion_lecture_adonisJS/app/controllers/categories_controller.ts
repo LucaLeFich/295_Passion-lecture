@@ -26,9 +26,9 @@ export default class CategoriesController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {
-    console.log(params.id)
-    return await Category.findOrFail(params.id)
+  async show({ params, response }: HttpContext) {
+    const category = await Category.findOrFail(params.id)
+    return response.ok(category) // 200
   }
 
   /**
