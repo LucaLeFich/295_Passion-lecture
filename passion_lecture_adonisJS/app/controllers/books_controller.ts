@@ -12,7 +12,7 @@ async index({ response }: HttpContext) {
  async store({ request, response }: HttpContext) {
  const { title, numberOfPage, pdfLink, abstract, editor, editionYear, imagePath, idCategory, idWriter} = await
 request.validateUsing(bookValidator)
- const book = await Book.create({title, numberOfPage, pdfLink, abstract, editor, editionYear, imagePath, idCategory, idWriter})
+ const book = await Book.create({title, numberOfPage, pdfLink, abstract, editor, editionYear, imagePath, categoryId:idCategory, writerId:idWriter})
  return response.created(book)
  }
 
@@ -22,7 +22,7 @@ request.validateUsing(bookValidator)
   async update({ params, request }: HttpContext) {
     const {title, numberOfPage, pdfLink, abstract, editor, editionYear, imagePath, idCategory, idWriter} = await request.validateUsing(bookValidator)
     const book = await Book.findOrFail(params.id)
-    book.merge({title, numberOfPage, pdfLink, abstract, editor, editionYear, imagePath, idCategory, idWriter})
+    book.merge({title, numberOfPage, pdfLink, abstract, editor, editionYear, imagePath, categoryId:idCategory, writerId:idWriter})
     await book.save()
     return book
   }
