@@ -49,7 +49,7 @@ export default class extends BaseSeeder {
         imagePath: 'images/lotr.jpg',
         categoryId: categories[3].id,
         writerId: writers[3].id,
-        userId: users[4].id,
+        userId: users[1].id,
       },
       {
         title: 'Harry Potter à l’école des sorciers',
@@ -61,7 +61,7 @@ export default class extends BaseSeeder {
         imagePath: 'images/hp1.jpg',
         categoryId: categories[3].id,
         writerId: writers[4].id,
-        userId: users[2].id,
+        userId: users[1].id,
       },
       {
         title: 'La Peste',
@@ -73,7 +73,7 @@ export default class extends BaseSeeder {
         imagePath: 'images/la-peste.jpg',
         categoryId: categories[4].id,
         writerId: writers[5].id,
-        userId: users[3].id,
+        userId: users[1].id,
       },
       {
         title: 'Don Quichotte',
@@ -85,7 +85,7 @@ export default class extends BaseSeeder {
         imagePath: 'images/don-quichotte.jpg',
         categoryId: categories[3].id,
         writerId: writers[2].id,
-        userId: users[5].id,
+        userId: users[1].id,
       },
       {
         title: 'Le Petit Prince',
@@ -97,7 +97,7 @@ export default class extends BaseSeeder {
         imagePath: 'images/le-petit-prince.jpg',
         categoryId: categories[2].id,
         writerId: writers[2].id,
-        userId: users[5].id,
+        userId: users[1].id,
       },
       {
         title: 'Les Misérables',
@@ -109,7 +109,7 @@ export default class extends BaseSeeder {
         imagePath: 'images/les-miserables.jpg',
         categoryId: categories[3].id,
         writerId: writers[7].id,
-        userId: users[8].id,
+        userId: users[1].id,
       },
       {
         title: 'Crime et Châtiment',
@@ -121,7 +121,7 @@ export default class extends BaseSeeder {
         imagePath: 'images/crime-et-chatiment.jpg',
         categoryId: categories[1].id,
         writerId: writers[9].id,
-        userId: users[11].id,
+        userId: users[1].id,
       },
       {
         title: 'L’Étranger',
@@ -133,7 +133,7 @@ export default class extends BaseSeeder {
         imagePath: 'images/letranger.jpg',
         categoryId: categories[2].id,
         writerId: writers[3].id,
-        userId: users[3].id,
+        userId: users[1].id,
       },
     ])
   }

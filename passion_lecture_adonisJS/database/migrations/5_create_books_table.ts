@@ -15,23 +15,23 @@ export default class extends BaseSchema {
       table.integer('edition_year').notNullable()
       table.string('image_path').notNullable()
       table
-        .integer('id_category')
+        .integer('category_id')
         .unsigned()
         .references('id')
         .inTable('categories')
-        .onDelete('CASCADE')
+        //.onDelete('CASCADE')
 
-      table.integer('id_writer').unsigned().references('id').inTable('writers').onDelete('CASCADE')
+      table.integer('writer_id').unsigned().references('id').inTable('writers').onDelete('CASCADE')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
 
        table
-       .integer('id_user')
+       .integer('user_id')
        .unsigned()
        .references('id')
        .inTable('users')
-       .onDelete('CASCADE')
+       //.onDelete('CASCADE')
     })
   }
 
