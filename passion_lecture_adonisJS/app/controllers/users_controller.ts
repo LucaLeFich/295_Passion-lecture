@@ -8,12 +8,13 @@ export default class UsersController {
   }
 
   async store({ request, response }: HttpContext) {
-    const { username, isAdmin } = request.only(['username', 'isAdmin'])
+    const { username, isAdmin } = request.only(['username', 'isAdmin','hashPassword'])
 
     const user = await User.create({
       username,
       isAdmin: isAdmin ?? false,
       creationDate: new Date(),
+      //hashPassword: 'defaultPassword'
       // on ne gère pas le mot de passe pour l'instant
     })
 
@@ -27,7 +28,7 @@ export default class UsersController {
 
   async update({ params, request, response }: HttpContext) {
     const user = await User.findOrFail(params.id)
-    const { username, isAdmin } = request.only(['username', 'isAdmin'])
+    const { username, isAdmin } = request.only(['username', 'isAdmin', 'hashPassword'])
 
     if (username) user.username = username
     if (typeof isAdmin !== 'undefined') user.isAdmin = isAdmin
