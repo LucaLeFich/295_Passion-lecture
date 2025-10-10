@@ -10,18 +10,53 @@ async index({ response }: HttpContext) {
   }
 
  async store({ request, response }: HttpContext) {
- const { title, numberOfPage, pdfLink, abstract, editor, editionYear, imagePath, idCategory, idWriter} = await
-request.validateUsing(bookValidator)
- const book = await Book.create({title, numberOfPage, pdfLink, abstract, editor, editionYear, imagePath, categoryId:idCategory, writerId:idWriter})
- return response.created(book)
+  const { title,
+     numberOfPage, 
+     pdfLink, 
+     abstract, 
+     editor, 
+     editionYear, 
+     imagePath, 
+     idCategory, idWriter} = await
+
+  request.validateUsing(bookValidator)
+  const book = await Book.create(
+      {title, 
+      numberOfPage, 
+      pdfLink, 
+      abstract, 
+      editor, 
+      editionYear, 
+      imagePath, 
+      categoryId:idCategory, 
+      writerId:idWriter,
+    })
+  return response.created(book)
  }
 
+
+ // à modifier
   async show({ params }: HttpContext) {
+    console.log(params.id)
+      const book = await Book
+      .query()
+      .preload('category')
+      .preload('writer')
+      .where('id', params.id)
+      .firstOrFail()
     return await Book.findOrFail(params.id)}
 
   async update({ params, request }: HttpContext) {
-    const {title, numberOfPage, pdfLink, abstract, editor, editionYear, imagePath, idCategory, idWriter} = await request.validateUsing(bookValidator)
-    const book = await Book.findOrFail(params.id)
+    const {title, numberOfPage, 
+      pdfLink, 
+      abstract, 
+      editor, 
+      editionYear, 
+      imagePath, 
+      idCategory, 
+      idWriter} = await request.validateUsing(bookValidator)
+    
+      const book = await Book.findOrFail(params.id)
     book.merge({title, numberOfPage, pdfLink, abstract, editor, editionYear, imagePath, categoryId:idCategory, writerId:idWriter})
     await book.save()
     return book
@@ -31,10 +66,4 @@ request.validateUsing(bookValidator)
     const book = await Book.findOrFail(params.id)
     return await book.delete()
   }
-
-
-
-
-
-
 }
