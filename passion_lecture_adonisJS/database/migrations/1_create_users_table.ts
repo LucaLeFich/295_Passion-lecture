@@ -2,13 +2,13 @@ import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
   protected tableName = 'users'
-
+  // TODO: refaire migrations
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id_user').primary() // correspond à idUser
+      table.increments('id_user').primary()
 
       table.string('username').nullable()
-      table.string('hash_password').notNullable() // correspond à hashPassword
+      table.string('hash_password').notNullable()
       table.boolean('is_admin').notNullable().defaultTo(false)
       table.date('creation_date').notNullable()
 
