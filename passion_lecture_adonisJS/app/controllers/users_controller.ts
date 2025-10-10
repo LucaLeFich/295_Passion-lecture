@@ -1,38 +1,44 @@
+import User from '#models/user'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class UsersController {
-  /**
-   * Display a list of resource
-   */
-  async index({}: HttpContext) {}
+  async index({ response }: HttpContext) {
+    const users = await User.query().orderBy('username')
+    return response.ok(users)
+  }
 
-  /**
-   * Display form to create a new record
-   */
-  async create({}: HttpContext) {}
+  async store({ request, response }: HttpContext) {
+    const { username, isAdmin } = request.only(['username', 'isAdmin'])
 
-  /**
-   * Handle form submission for the create action
-   */
-  async store({ request }: HttpContext) {}
+    const user = await User.create({
+      username,
+      isAdmin: isAdmin ?? false,
+      creationDate: new Date(),
+      // on ne gère pas le mot de passe pour l'instant
+    })
 
-  /**
-   * Show individual record
-   */
-  async show({ params }: HttpContext) {}
+    return response.created(user)
+  }
 
-  /**
-   * Edit individual record
-   */
-  async edit({ params }: HttpContext) {}
+  async show({ params, response }: HttpContext) {
+    const user = await User.findOrFail(params.id)
+    return response.ok(user)
+  }
 
-  /**
-   * Handle form submission for the edit action
-   */
-  async update({ params, request }: HttpContext) {}
+  async update({ params, request, response }: HttpContext) {
+    const user = await User.findOrFail(params.id)
+    const { username, isAdmin } = request.only(['username', 'isAdmin'])
 
-  /**
-   * Delete record
-   */
-  async destroy({ params }: HttpContext) {}
+    if (username) user.username = username
+    if (typeof isAdmin !== 'undefined') user.isAdmin = isAdmin
+
+    await user.save()
+    return response.ok(user)
+  }
+
+  async destroy({ params, response }: HttpContext) {
+    const user = await User.findOrFail(params.id)
+    await user.delete()
+    return response.noContent()
+  }
 }
