@@ -37,14 +37,14 @@ export default class BooksController {
   }
 
   // à modifier
-  async show({ params }: HttpContext) {
+  async show({ params, response }: HttpContext) {
     console.log(params.id)
     const book = await Book.query()
       .preload('category')
       .preload('writer')
       .where('id', params.id)
       .firstOrFail()
-    return await Book.findOrFail(params.id)
+    return response.ok(book)
   }
 
   async update({ params, request }: HttpContext) {
