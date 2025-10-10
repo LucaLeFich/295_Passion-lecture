@@ -20,3 +20,4 @@ router.get('test', async () => {
 router.resource('writers', WritersController).apiOnly()
 router.resource('books', BooksController).apiOnly()
 router.resource('categories', CategoriesController).apiOnly()
+router.resource('users', UsersController).apiOnly()
