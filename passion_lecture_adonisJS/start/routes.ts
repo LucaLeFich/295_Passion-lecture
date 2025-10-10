@@ -10,6 +10,7 @@ import router from '@adonisjs/core/services/router'
 import WritersController from '#controllers/writers_controller'
 import BooksController from '#controllers/books_controller'
 import CategoriesController from '#controllers/categories_controller'
+import UsersController from '#controllers/users_controller'
 
 // Route test
 router.get('test', async () => {
