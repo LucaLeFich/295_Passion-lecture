@@ -6,11 +6,15 @@ import User from '#models/user'
 
 export default class extends BaseSeeder {
   async run() {
-      const categories = await Category.all()
-      const writers = await Writer.all()
-      const users = await User.all()
+    const categories = await Category.all()
+    const writers = await Writer.all()
+    const users = await User.all()
+
+    console.log('Categories:', categories.length)
+    console.log('Writers:', writers.length)
+    console.log('Users:', users.length)
     // Write your database queries inside the run method
-     await Book.createMany([
+    await Book.createMany([
       {
         title: 'L’Ombre du Vent',
         numberOfPage: 565,
@@ -20,7 +24,7 @@ export default class extends BaseSeeder {
         editionYear: 2004,
         imagePath: 'images/lombre-du-vent.jpg',
         categoryId: categories[1].id,
-        writerId:  writers[1].id,
+        writerId: writers[1].id,
         userId: users[1].id,
       },
       {
@@ -32,7 +36,7 @@ export default class extends BaseSeeder {
         editionYear: 1949,
         imagePath: 'images/1984.jpg',
         categoryId: categories[2].id,
-        writerId:  writers[2].id,
+        writerId: writers[2].id,
         userId: users[1].id,
       },
       {
@@ -44,7 +48,7 @@ export default class extends BaseSeeder {
         editionYear: 1954,
         imagePath: 'images/lotr.jpg',
         categoryId: categories[3].id,
-        writerId:  writers[3].id,
+        writerId: writers[3].id,
         userId: users[4].id,
       },
       {
@@ -56,7 +60,7 @@ export default class extends BaseSeeder {
         editionYear: 1997,
         imagePath: 'images/hp1.jpg',
         categoryId: categories[3].id,
-        writerId:  writers[4].id,
+        writerId: writers[4].id,
         userId: users[2].id,
       },
       {
@@ -68,7 +72,7 @@ export default class extends BaseSeeder {
         editionYear: 1947,
         imagePath: 'images/la-peste.jpg',
         categoryId: categories[4].id,
-        writerId:  writers[5].id,
+        writerId: writers[5].id,
         userId: users[3].id,
       },
       {
@@ -80,7 +84,7 @@ export default class extends BaseSeeder {
         editionYear: 1605,
         imagePath: 'images/don-quichotte.jpg',
         categoryId: categories[3].id,
-        writerId:  writers[2].id,
+        writerId: writers[2].id,
         userId: users[5].id,
       },
       {
@@ -92,7 +96,7 @@ export default class extends BaseSeeder {
         editionYear: 1943,
         imagePath: 'images/le-petit-prince.jpg',
         categoryId: categories[2].id,
-        writerId:  writers[2].id,
+        writerId: writers[2].id,
         userId: users[5].id,
       },
       {
@@ -104,7 +108,7 @@ export default class extends BaseSeeder {
         editionYear: 1862,
         imagePath: 'images/les-miserables.jpg',
         categoryId: categories[3].id,
-        writerId:  writers[7].id,
+        writerId: writers[7].id,
         userId: users[8].id,
       },
       {
@@ -116,7 +120,7 @@ export default class extends BaseSeeder {
         editionYear: 1866,
         imagePath: 'images/crime-et-chatiment.jpg',
         categoryId: categories[1].id,
-        writerId:  writers[9].id,
+        writerId: writers[9].id,
         userId: users[11].id,
       },
       {
@@ -128,7 +132,7 @@ export default class extends BaseSeeder {
         editionYear: 1942,
         imagePath: 'images/letranger.jpg',
         categoryId: categories[2].id,
-        writerId:  writers[3].id,
+        writerId: writers[3].id,
         userId: users[3].id,
       },
     ])
