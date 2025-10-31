@@ -15,13 +15,6 @@ export default class CommentsController {
   }
 
   /**
-   * Display form to create a new record
-   */
-  async create({}: HttpContext) {
-    
-  }
-
-  /**
    * Handle form submission for the create action
    */
   async store({ request, response }: HttpContext) {
@@ -41,12 +34,8 @@ export default class CommentsController {
       .preload('book')
       .where('id', params.id)
       .firstOrFail()
-    return await Comment.findOrFail(params.id)
+    return await Comment.findOrFail(comment.id)
 }
-  /**
-   * Edit individual record
-   */
-  async edit({ params }: HttpContext) {}
 
   /**
    * Handle form submission for the edit action
@@ -62,8 +51,9 @@ export default class CommentsController {
   /**
    * Delete record
    */
-  async destroy({ params }: HttpContext) {
+  async destroy({ params, response }: HttpContext) {
     const comment = await Comment.findOrFail(params.id)
-    return await comment.delete()
+    await comment.delete()
+    return response.noContent()
   }
 }

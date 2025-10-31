@@ -11,6 +11,12 @@ export default class Evaluate extends BaseModel {
   @column()
   declare note: number
 
+  @column({ columnName: 'user_id' })
+  declare userId: number
+
+  @column({ columnName: 'book_id' })
+  declare bookId: number
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

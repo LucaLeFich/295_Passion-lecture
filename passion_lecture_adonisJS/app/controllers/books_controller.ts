@@ -78,8 +78,9 @@ export default class BooksController {
     return book
   }
 
-  async destroy({ params }: HttpContext) {
+  async destroy({ params, response }: HttpContext) {
     const book = await Book.findOrFail(params.id)
-    return await book.delete()
+    await book.delete()
+    return response.noContent()
   }
 }

@@ -50,10 +50,11 @@ export default class CategoriesController {
   /**
    * Delete record
    */
-  async destroy({ params }: HttpContext) {
+  async destroy({ params, response }: HttpContext) {
     // Vérification de l'existence de la catégorie
     const category = await Category.findOrFail(params.id)
     // Suppression de la catégorie
-    return await category.delete()
+    await category.delete()
+    return response.noContent()
   }
 }
