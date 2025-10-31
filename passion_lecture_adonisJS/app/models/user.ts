@@ -8,6 +8,7 @@ import type { HasMany } from '@adonisjs/lucid/types/relations'
 import Book from './book.js'
 import Comment from './comment.js'
 import Evaluate from './evaluate.js'
+import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -44,4 +45,6 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   //  @hasMany(() => Evaluate)
   //  declare evaluate: HasMany<typeof Evaluate>
+
+  static accessTokens = DbAccessTokensProvider.forModel(User)
 }
