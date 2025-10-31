@@ -1,0 +1,27 @@
+meta {
+  name: updateWriters
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:3333/writers/11
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Alleaiaiai",
+      "firstname": "Isaoioioi"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
