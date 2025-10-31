@@ -48,6 +48,7 @@ router
     router.delete('categories/:id', [CategoriesController, 'destroy'])
 
     // Comments - toutes les opérations (sensibles)
+    router.get('comments', [CommentsController, 'index'])
     router.post('comments', [CommentsController, 'store'])
     router.get('comments/:id', [CommentsController, 'show'])
     router.put('comments/:id', [CommentsController, 'update'])
