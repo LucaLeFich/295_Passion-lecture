@@ -37,8 +37,8 @@ router
         router.resource('evaluations', EvaluatesController).apiOnly()
       })
       .prefix('books/:book_id')
+      .use(middleware.auth())
   })
-  .use(middleware.auth())
 
 router
   .group(() => {
