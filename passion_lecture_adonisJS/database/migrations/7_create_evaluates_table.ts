@@ -8,6 +8,20 @@ export default class extends BaseSchema {
       table.increments('id')
       table.integer('note')
 
+      table
+      .integer('user_id')
+      .unsigned()
+      .references('id')
+      .inTable('users')
+      .onDelete('CASCADE')
+
+      table
+      .integer('book_id')
+      .unsigned()
+      .references('id')
+      .inTable('books')
+      .onDelete('CASCADE')
+
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })
