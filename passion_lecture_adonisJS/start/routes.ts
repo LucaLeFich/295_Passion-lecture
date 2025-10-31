@@ -24,6 +24,7 @@ router.get('writers', [WritersController, 'index'])
 router.get('writers/:id', [WritersController, 'show'])
 router.get('categories', [CategoriesController, 'index'])
 router.get('categories/:id', [CategoriesController, 'show'])
+router.get('categories/:category_id/books', [BooksController, 'index'])
 router.get('evaluates', [EvaluatesController, 'index'])
 router.get('evaluates/:id', [EvaluatesController, 'show'])
 

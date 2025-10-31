@@ -3,8 +3,13 @@ import Book from '#models/book'
 import bookValidator from '#validators/book'
 
 export default class BooksController {
-  async index({ response }: HttpContext) {
-    const books = await Book.query().orderBy('title')
+  async index({ params, response }: HttpContext) {
+    const query = Book.query()
+    // si params.category_id exist -> filter by category
+    if (params && params.category_id) {
+      query.where('category_id', params.category_id)
+    }
+    const books = await query.orderBy('title')
     return response.ok(books)
   }
 
