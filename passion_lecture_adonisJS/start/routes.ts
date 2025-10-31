@@ -66,6 +66,7 @@ router
         router.resource('comments', CommentsController).apiOnly()
       })
       .prefix('books/:book_id')
+      .use(middleware.auth())
 
     // /books/:book_id/evaluations
     router
