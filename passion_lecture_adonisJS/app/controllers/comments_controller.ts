@@ -17,9 +17,16 @@ export default class CommentsController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request, response }: HttpContext) {
-    const {content, idUser, idBook} =await request.validateUsing(commentValidator)
-    const comment = await Comment.create({userId:idUser, bookId:idBook, content})
+  async store({ params, request, response, auth }: HttpContext) {
+    // validate (idUser and idBook are optional in the validator)
+    const { content, idUser, idBook } = await request.validateUsing(commentValidator)
+
+    // Determine user and book ids: prefer payload, fall back to auth and route param
+  const user = await auth.getUserOrFail()
+  const finalUserId = idUser ?? user.id
+    const finalBookId = idBook ?? params.book_id ?? params.bookId
+
+    const comment = await Comment.create({ userId: finalUserId, bookId: finalBookId, content })
     return response.created(comment)
   }
 
@@ -40,12 +47,17 @@ export default class CommentsController {
   /**
    * Handle form submission for the edit action
    */
-  async update({ params, request }: HttpContext) {
-    const {content, idUser, idBook} =await request.validateUsing(commentValidator)
+  async update({ params, request, auth }: HttpContext) {
+    const { content, idUser, idBook } = await request.validateUsing(commentValidator)
     const comment = await Comment.findOrFail(params.id)
-    comment.merge({userId:idUser, bookId:idBook, content})
-    await comment.save()
-    return comment
+
+    const user = await auth.getUserOrFail()
+    const finalUserId = idUser ?? user.id
+      const finalBookId = idBook ?? params.book_id ?? params.bookId
+
+      comment.merge({ userId: finalUserId, bookId: finalBookId, content })
+      await comment.save()
+      return comment
   }
 
   /**

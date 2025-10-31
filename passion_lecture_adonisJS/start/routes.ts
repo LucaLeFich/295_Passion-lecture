@@ -47,12 +47,17 @@ router
     router.put('categories/:id', [CategoriesController, 'update'])
     router.delete('categories/:id', [CategoriesController, 'destroy'])
 
-    // Comments - toutes les opérations (sensibles)
-    router.get('comments', [CommentsController, 'index'])
-    router.post('comments', [CommentsController, 'store'])
-    router.get('comments/:id', [CommentsController, 'show'])
-    router.put('comments/:id', [CommentsController, 'update'])
-    router.delete('comments/:id', [CommentsController, 'destroy'])
+  // Comments - toutes les opérations (sensibles)
+  router.get('comments', [CommentsController, 'index'])
+  router.post('comments', [CommentsController, 'store'])
+  router.get('comments/:id', [CommentsController, 'show'])
+  router.put('comments/:id', [CommentsController, 'update'])
+  router.delete('comments/:id', [CommentsController, 'destroy'])
+
+  // Alias: nested comments under books using alternative path
+  // e.g. POST /comments/books/:book_id  and GET /comments/books/:book_id
+  router.post('comments/books/:book_id', [CommentsController, 'store'])
+  router.get('comments/books/:book_id', [CommentsController, 'index'])
 
     // Evaluates - toutes les opérations (sensibles)
     router.post('evaluations', [EvaluatesController, 'store'])
