@@ -5,15 +5,20 @@ meta {
 }
 
 put {
-  url: http://localhost:3333/category/6
+  url: http://localhost:3333/categories/7
   body: json
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 body:json {
-  {"label":"Mystery"}
+  {"label":"funny"}
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
