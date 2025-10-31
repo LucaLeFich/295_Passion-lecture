@@ -5,6 +5,7 @@ import Writer from './writer.js'
 import User from './user.js'
 import Comment from './comment.js'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+import Evaluate from './evaluate.js'
 
 export default class Book extends BaseModel {
   @column({ isPrimary: true })
@@ -57,4 +58,7 @@ export default class Book extends BaseModel {
 
   @hasMany (()=> Comment)
   declare comment: HasMany<typeof Comment>
+
+  @hasMany (()=> Evaluate)
+  declare evaluate: HasMany<typeof Evaluate>
 }
