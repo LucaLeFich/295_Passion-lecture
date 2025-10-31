@@ -40,11 +40,11 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @hasMany(() => Book)
   declare book: HasMany<typeof Book>
 
-   @hasMany(() => Comment)
-   declare comment: HasMany<typeof Comment>
+  @hasMany(() => Comment)
+  declare comment: HasMany<typeof Comment>
 
-  //  @hasMany(() => Evaluate)
-  //  declare evaluate: HasMany<typeof Evaluate>
+  @hasMany(() => Evaluate)
+  declare evaluate: HasMany<typeof Evaluate>
 
   static accessTokens = DbAccessTokensProvider.forModel(User)
 }
