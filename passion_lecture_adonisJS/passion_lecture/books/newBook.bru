@@ -10,9 +10,13 @@ post {
   auth: bearer
 }
 
+auth:bearer {
+  token: {{token}}
+}
+
 body:json {
   {
-  "title": "L’Ombre",
+  "title": "L’Ombre6",
   "numberOfPage": 56,
   "pdfLink": "books/lombre-du-vent.pdf",
   "abstract": "Un roman mystérieux qui explore la mémoire et les livres oubliés.",
@@ -20,8 +24,7 @@ body:json {
   "editionYear": "2004",
   "imagePath": "images/lombre-du-vent.jpg",
   "idCategory": 1,
-  "writer": 1,
-  "userId": 1
+  "idWriter": 1
   }
 }
 

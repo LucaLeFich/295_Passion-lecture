@@ -8,7 +8,7 @@ export default class BooksController {
     return response.ok(books)
   }
 
-  async store({ request, response }: HttpContext) {
+  async store({ request, response, auth }: HttpContext) {
     const {
       title,
       numberOfPage,
@@ -19,8 +19,11 @@ export default class BooksController {
       imagePath,
       idCategory,
       idWriter,
-      idUser,
     } = await request.validateUsing(bookValidator)
+    
+    // Récupérer l'utilisateur connecté
+    const user = auth.getUserOrFail()
+    
     const book = await Book.create({
       title,
       numberOfPage,
@@ -31,7 +34,7 @@ export default class BooksController {
       imagePath,
       categoryId: idCategory,
       writerId: idWriter,
-      userId: idUser,
+      userId: user.id,
     })
     return response.created(book)
   }
@@ -47,7 +50,7 @@ export default class BooksController {
     return response.ok(book)
   }
 
-  async update({ params, request }: HttpContext) {
+  async update({ params, request, auth }: HttpContext) {
     const {
       title,
       numberOfPage,
@@ -58,8 +61,11 @@ export default class BooksController {
       imagePath,
       idCategory,
       idWriter,
-      idUser,
     } = await request.validateUsing(bookValidator)
+    
+    // Récupérer l'utilisateur connecté
+    const user = auth.getUserOrFail()
+    
     const book = await Book.findOrFail(params.id)
     book.merge({
       title,
@@ -71,7 +77,7 @@ export default class BooksController {
       imagePath,
       categoryId: idCategory,
       writerId: idWriter,
-      userId: idUser,
+      userId: user.id,
     })
 
     await book.save()

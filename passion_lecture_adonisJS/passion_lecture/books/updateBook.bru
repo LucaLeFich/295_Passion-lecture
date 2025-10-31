@@ -7,16 +7,21 @@ meta {
 put {
   url: http://localhost:3333/books/1
   body: json
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 body:json {
   {
-    "title": "L’Ombre du Vent",
+    "title": "L’Ombre du Vent2",
   "numberOfPage": 565
   }
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

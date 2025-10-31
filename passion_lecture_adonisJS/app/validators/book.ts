@@ -11,7 +11,6 @@ const bookValidator = vine.compile(
         imagePath: vine.string(),
         idCategory: vine.number(),
         idWriter: vine.number(),
-        idUser: vine.number(),
     })
 )
 export default bookValidator

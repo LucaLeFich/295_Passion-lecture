@@ -1,17 +1,13 @@
 meta {
-  name: newUsers
+  name: register
   type: http
-  seq: 2
+  seq: 3
 }
 
 post {
   url: http://localhost:3333/users/register
   body: json
-  auth: bearer
-}
-
-auth:bearer {
-  token: {{token}}
+  auth: inherit
 }
 
 body:json {
