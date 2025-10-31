@@ -8,9 +8,9 @@ export default class extends BaseSchema {
       table.increments('id').primary()
 
       table.string('username').nullable()
-      table.string('hash_password').notNullable()
+      table.string('password').notNullable()
       table.boolean('is_admin').notNullable().defaultTo(false)
-      table.date('creation_date').notNullable()
+      // table.date('creation_date').notNullable().defaultTo(this.now().toSQLDate())
 
       table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(this.now())
       table.timestamp('updated_at', { useTz: true }).nullable()

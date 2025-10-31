@@ -6,15 +6,15 @@ export default class UserSeeder extends BaseSeeder {
     await User.createMany([
       {
         username: 'admin',
-        hashPassword: 'admin123', // pas hashé pour l'instant
+        password: 'admin123', // pas hashé pour l'instant
         isAdmin: true,
-        creationDate: new Date(),
+        // creationDate: new Date(),
       },
       {
         username: 'johndoe',
-        hashPassword: 'password123',
+        password: 'password123',
         isAdmin: false,
-        creationDate: new Date(),
+        // creationDate: new Date(),
       },
     ])
   }

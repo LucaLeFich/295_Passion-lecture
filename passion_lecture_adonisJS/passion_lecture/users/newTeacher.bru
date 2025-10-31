@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: http://localhost:3333/teachers
+  url: http://localhost:3333/users/register
   body: json
   auth: bearer
 }
@@ -15,11 +15,12 @@ auth:bearer {
 }
 
 body:json {
-  { "name":"Kishechuy",
-  "firstname":"Opossum",
-  "email": "kishossum@email.com"}
+  { "username":"user4",
+   "password": "12345678"
+  }
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

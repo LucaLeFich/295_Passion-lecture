@@ -39,6 +39,7 @@ router
       .prefix('books/:book_id')
       .use(middleware.auth())
   })
+ 
 
 router
   .group(() => {
@@ -46,4 +47,4 @@ router
     router.post('login', [AuthController, 'login'])
     router.post('logout', [AuthController, 'logout']).use(middleware.auth())
   })
-  .prefix('user')
+  .prefix('users')
