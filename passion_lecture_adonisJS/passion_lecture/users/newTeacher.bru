@@ -1,0 +1,25 @@
+meta {
+  name: newTeacher
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3333/teachers
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  { "name":"Kishechuy",
+  "firstname":"Opossum",
+  "email": "kishossum@email.com"}
+}
+
+settings {
+  encodeUrl: true
+}

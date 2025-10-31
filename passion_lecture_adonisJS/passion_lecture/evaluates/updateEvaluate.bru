@@ -1,0 +1,25 @@
+meta {
+  name: updateEvaluate
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3333/books/1/evaluations
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "note": 2
+  }
+}
+
+settings {
+  encodeUrl: true
+}

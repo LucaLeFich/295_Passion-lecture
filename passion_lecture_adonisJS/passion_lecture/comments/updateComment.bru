@@ -1,0 +1,25 @@
+meta {
+  name: updateComment
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:3333/commens/1
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "content": "Nul"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,19 @@
+meta {
+  name: updateCategory
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3333/category/6
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {"label":"Mystery"}
+}
+
+settings {
+  encodeUrl: true
+}

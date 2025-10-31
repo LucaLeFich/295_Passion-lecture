@@ -1,0 +1,15 @@
+meta {
+  name: allCategories
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:3333/categories
+  body: json
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

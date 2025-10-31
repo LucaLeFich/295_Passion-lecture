@@ -1,0 +1,22 @@
+meta {
+  name: updateBook
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:3333/books/1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "L’Ombre du Vent",
+  "numberOfPage": 565
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,27 @@
+meta {
+  name: newComments
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3333/comments
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "content": "Very informative.",
+    "userId": 2,
+    "bookId": 2
+  }
+}
+
+settings {
+  encodeUrl: true
+}
