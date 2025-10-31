@@ -24,6 +24,9 @@ router.get('writers', [WritersController, 'index'])
 router.get('writers/:id', [WritersController, 'show'])
 router.get('categories', [CategoriesController, 'index'])
 router.get('categories/:id', [CategoriesController, 'show'])
+router.get('evaluates', [EvaluatesController, 'index'])
+router.get('evaluates/:id', [EvaluatesController, 'show'])
+
 
 // Routes protégées (POST, PUT, DELETE - modification)
 router
@@ -42,6 +45,17 @@ router
     router.post('categories', [CategoriesController, 'store'])
     router.put('categories/:id', [CategoriesController, 'update'])
     router.delete('categories/:id', [CategoriesController, 'destroy'])
+
+    // Comments - toutes les opérations (sensibles)
+    router.post('comments', [CommentsController, 'store'])
+    router.get('comments/:id', [CommentsController, 'show'])
+    router.put('comments/:id', [CommentsController, 'update'])
+    router.delete('comments/:id', [CommentsController, 'destroy'])
+
+    // Evaluates - toutes les opérations (sensibles)
+    router.post('evaluations', [EvaluatesController, 'store'])
+    router.put('evaluations/:id', [EvaluatesController, 'update'])
+    router.delete('evaluations/:id', [EvaluatesController, 'destroy'])
 
     // Users - toutes les opérations (sensibles)
     router.resource('users', UsersController).apiOnly()

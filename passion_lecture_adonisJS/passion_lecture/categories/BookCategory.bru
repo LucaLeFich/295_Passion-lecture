@@ -1,15 +1,16 @@
 meta {
   name: BookCategory
   type: http
-  seq: 1
+  seq: 2
 }
 
 get {
-  url: http://localhost:3333/category/2/book
+  url: http://localhost:3333/categories/1/books
   body: json
   auth: inherit
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

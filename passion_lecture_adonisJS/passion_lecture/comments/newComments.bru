@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: http://localhost:3333/comments
+  url: http://localhost:3333/comments/books/2
   body: json
   auth: bearer
 }
@@ -17,11 +17,10 @@ auth:bearer {
 body:json {
   {
     "content": "Very informative.",
-    "userId": 2,
-    "bookId": 2
   }
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

@@ -9,8 +9,8 @@ export default class CommentsController {
    */
   async index({response}: HttpContext) {
     
-        const comment = await Comment.query().orderBy('date')  
-        return response.ok(comment)
+     const comment = await Comment.query().orderBy('date')  
+     return response.ok(comment)
       
   }
 
