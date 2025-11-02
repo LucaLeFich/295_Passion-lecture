@@ -1,10 +1,10 @@
 meta {
-  name: BookEvaluates
+  name: newEvaluation
   type: http
-  seq: 2
+  seq: 3
 }
 
-get {
+post {
   url: http://localhost:3333/books/3/evaluations
   body: json
   auth: bearer
@@ -12,6 +12,14 @@ get {
 
 auth:bearer {
   token: {{token}}
+}
+
+body:json {
+  {
+    "note": 10,
+    "userId": 1,
+    "bookId": 2
+  }
 }
 
 settings {

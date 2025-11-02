@@ -5,9 +5,13 @@ meta {
 }
 
 put {
-  url: http://localhost:3333/users/4
+  url: http://localhost:3333/users/3
   body: json
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
 }
 
 body:json {
