@@ -15,11 +15,17 @@ import AuthController from '#controllers/auth_controller'
 import { middleware } from './kernel.js'
 import EvaluatesController from '#controllers/evaluates_controller'
 import CommentsController from '#controllers/comments_controller'
+import BookepubsController from '#controllers/booksepub_controller'
 
 
 // Routes publiques (GET seulement - lecture)
 router.get('books', [BooksController, 'index'])
 router.get('books/:id', [BooksController, 'show'])
+//epub
+router.get('bookepubs', [BookepubsController, 'index'])
+router.get('bookepubs/:id', [BookepubsController, 'show'])
+router.get('bookepubs/:id/download', [BookepubsController, 'download'])
+// </epub>
 router.get('writers', [WritersController, 'index'])
 router.get('writers/:id', [WritersController, 'show'])
 router.get('categories', [CategoriesController, 'index'])
@@ -27,6 +33,10 @@ router.get('categories/:id', [CategoriesController, 'show'])
 router.get('categories/:category_id/books', [BooksController, 'index'])
 router.get('evaluates', [EvaluatesController, 'index'])
 router.get('evaluates/:id', [EvaluatesController, 'show'])
+
+//upload et suppression epubs????
+router.post('bookepubs', [BookepubsController, 'store'])
+router.delete('bookepubs/:id', [BookepubsController, 'destroy'])
 
 
 // Routes protégées (POST, PUT, DELETE - modification)
