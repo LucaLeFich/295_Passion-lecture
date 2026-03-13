@@ -2,11 +2,11 @@
 -- SHOW VARIABLES LIKE 'secure_file_priv';
 
 
--- docker exec -it db sh -c "rm -rf /var/lib/epubs; mkdir -p /var/lib/epubs"
--- docker cp "C:\Users\pu74vys\Documents\GitHub\ReadME-C335\Doc\epubs\." db:/var/lib/epubs
+-- docker exec -it db sh -c "mkdir -p /var/lib/mysql-files/epubs && chown -R mysql:mysql /var/lib/mysql-files"
+-- docker cp "C:\Users\pu74vys\Documents\GitHub\ReadME-C335\Doc\epubs\." db:/var/lib/mysql-files/epubs
+-- docker exec -it db ls -l /var/lib/mysql-files/epubs
 
-INSERT INTO bookepubs (name, content, created_at, updated_at)
-VALUES ('Dickens, Charles - Oliver Twist', LOAD_FILE('/var/lib/mysql-files/epubs/Dickens, Charles - Oliver Twist.epub'), NOW(), NOW());
+INSERT INTO bookepubs (name, content, created_at, updated_at) VALUES ('Dickens, Charles - Oliver Twist', LOAD_FILE('/var/lib/mysql-files/epubs/Dickens, Charles - Oliver Twist.epub'), NOW(), NOW());
 
 INSERT INTO bookepubs (name, content, created_at, updated_at)
 VALUES ('Doyle, Artur Conan - Sherlock Holmes', LOAD_FILE('/var/lib/mysql-files/epubs/Doyle, Artur Conan - Sherlock Holmes.epub'), NOW(), NOW());
